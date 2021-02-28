@@ -46,11 +46,26 @@ let predictions = [];
 let timer;
 
 var cnv;
+let sketchWidth;
+let sketchHeight;
+
+//Sound variables
+let mySnd;
+let soundsArray = [];
+// let sounds = ["/assets/pop.wav"];
+let amp;
+let popSound;
+
+// Sound
+function preload() {
+  soundFormats('mp3', 'wav');
+  popSound = loadSound('/assets/pop.wav');
+}
+
 
 function setup() {
 
-
-    var cnv = createCanvas(640, 480);
+    cnv = createCanvas(640, 480);
 
     cnv.style('border-radius', '60rem 60rem 40rem 60rem ');
     cnv.parent('videoCanvas');
@@ -99,8 +114,11 @@ function setup() {
     // Wrists
     wristR = createVector(width, height);
     wristL = createVector(width, height);
-
+  
+  //set sound amp and volume
+  amp = new p5.Amplitude(0.9);
 }
+
 
 
 
@@ -122,10 +140,12 @@ function modelReady() {
 function mousePressed() {
     for (let b of bubbles) {
         b.clicked(mouseX, mouseY);
+        // bubbles.pop(b);
     }
 }
 
 function draw() {
+    // image(video, 0, 0, sketchWidth, sketchHeight);
     image(video, 0, 0, width, height);
 
     // We can call both functions to draw all keypoints and the skeletons
@@ -239,7 +259,9 @@ function drawKeypoints() {
         }
     }
     // Mouth
-    mouth = createVector(lerpPos[0].x, lerpPos[0].y);
+    mouth = createVector(lerpPos[0].x, lerpPos[0].y+50);
+    fill(255,0,0);
+    // ellipse(mouth.x, mouth.y, 50,50);
 
 
     // Wrists
@@ -257,7 +279,7 @@ function drawKeypoints() {
     mouthDistL = mouth.dist(wristL);
 
     if (counter > 300) {
-        if (mouthDistR < 100) {
+        if (mouthDistR < 100 || mouthDistL<100) {
             fill(255, 0, 255);
             bubblesFall();
         }
@@ -265,8 +287,8 @@ function drawKeypoints() {
             fill(255);
         }
     }
-    ellipse(wristR.x, wristR.y, 100, 100);
-    ellipse(wristL.x, wristL.y, 100, 100);
+    // ellipse(wristR.x, wristR.y, 100, 100);
+    // ellipse(wristL.x, wristL.y, 100, 100);
 
     counter++;
     // console.log(counter)

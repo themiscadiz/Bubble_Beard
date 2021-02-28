@@ -17,14 +17,15 @@ ctx.clearRect(0, 0, canvas.width, canvas.height);
 // ctx.strokeStyle = `hsl(${Math.random() * 360}, 90%, 60%)`;
 
 
+
 ctx.beginPath();
+
 ctx.rect(move, 0, canvas.width, canvas.height);
-ctx.fillStyle = "#c0ecec"
+// ctx.fillStyle = "#c0ecec"
+ctx.fillStyle = "#2E6D62";
 ctx.fill();
-
 // move += 0.1;
-move += 15;
-
+move += 1;
 
 window.requestAnimationFrame(render);
 }
