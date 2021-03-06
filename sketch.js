@@ -60,15 +60,23 @@ let soundsArray = [];
 // let sounds = ["/assets/pop.wav"];
 let amp;
 let popSound;
+let music;
+
+let startButton;
+// let count = 0;
+let startCount = false;
 
 // Sound
 function preload() {
     soundFormats('mp3', 'wav');
     popSound = loadSound('/assets/pop.wav');
+    music = loadSound('/assets/musicBubbleBeard.wav');
+
 }
 
 
 function setup() {
+
 
     cnv = createCanvas(640, 480);
 
@@ -110,18 +118,21 @@ function setup() {
         let thispoint = createVector(0, 0);
         lerpPos.push(thispoint);
     }
+    // start bubble beard with button mouth click
+    startButton = document.getElementById("timerSpace");
 
-// start bubble beard with button mouth click
-    let startButton = document.getElementById("timerSpace");
 
-    startButton.addEventListener("click", () => {
+    // // start bubble beard with button mouth click
+    //     let startButton = document.getElementById("timerSpace");
 
-        for (let i = 0; i < pointsLength; i++) {
-            bubble = new Beard(0.0, width / 2, mass, gravity);
-            popSound.play();
-            bubbles.push(bubble);
-        }
-    });
+    //     startButton.addEventListener("click", () => {
+
+    //         for (let i = 0; i < pointsLength; i++) {
+    //             bubble = new Beard(0.0, width / 2, mass, gravity);
+    //             popSound.play();
+    //             bubbles.push(bubble);
+    //         }
+    //     });
 
     // Wrists
     wristR = createVector(width, height);
@@ -130,9 +141,6 @@ function setup() {
     //set sound amp and volume
     amp = new p5.Amplitude(0.9);
 }
-
-
-
 
 function modelReady() {
     // select('#status').html('Model Loaded');
@@ -157,6 +165,14 @@ function mousePressed() {
 }
 
 function draw() {
+
+
+    //move image by the width of image to the left
+    translate(video.width, 0);
+    //then scale it by -1 in the x-axis
+    //to flip the image
+    scale(-1, 1);
+
     // image(video, 0, 0, sketchWidth, sketchHeight);
     image(video, 0, 0, width, height);
 
@@ -169,6 +185,23 @@ function draw() {
 
     // let newIndicator = createVector(mouthTop.x, mouthTop.y);
     let newIndicator = createVector(mouth.x, mouth.y);
+
+
+    startButton.addEventListener("click", () => {
+        startCount = true;
+    });
+    if (startCount) {
+        if (!music.isPlaying()) {
+            music.play();
+        }
+
+        if (frameCount % 90 == 0) {
+            bubble = new Beard(newIndicator.x, newIndicator.y, mass, gravity);
+            popSound.play();
+            bubbles.push(bubble);
+        }
+        //    console.log("test", bubbles.length);
+    }
 
     // for (let b of bubbles) {
     //     b.update(newIndicator.x, newIndicator.y);
@@ -298,19 +331,37 @@ function drawKeypoints() {
     // distance between lips
     mouthDistL = mouth.dist(wristL);
 
-    if (counter > 300) {
-        if (mouthDistR < 100 || mouthDistL < 100) {
+
+    // bubble beard fall
+    if (bubbles.length > 10) {
+        if (mouthDistR < 200 || mouthDistL < 200) {
             fill(255, 0, 255);
+
+            // bubbles fall
             bubblesFall();
+
+            // do not create more bubbles
+            startCount = false;
         }
         else {
             fill(255);
         }
     }
+
+    // if (counter > 300) {
+    //     if (mouthDistR < 100 || mouthDistL < 100) {
+    //         fill(255, 0, 255);
+    //         bubblesFall();
+    //     }
+    //     else {
+    //         fill(255);
+    //     }
+    // }
+
     // ellipse(wristR.x, wristR.y, 100, 100);
     // ellipse(wristL.x, wristL.y, 100, 100);
 
-    counter++;
+    // counter++;
     // console.log(counter)
 
 }

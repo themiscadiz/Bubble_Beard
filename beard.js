@@ -8,12 +8,12 @@ class Beard {
     this.vy = 0;
     this.mass = m;
     this.gravity = g;
-    this.radius = random(5, 30);
+    this.radius = random(5, 20);
     this.updateRadius = this.radius;
 
     this.stiffness = random(0.08, 0.5);
     this.damping = random(0.25, 0.80);
-    console.log("damping ", this.damping, "stiffnes ", this.stiffness);
+    // console.log("damping ", this.damping, "stiffnes ", this.stiffness);
 
     this.randomPosX = random(-50, 50);
     this.randomPosY = random(-50, 50);
@@ -44,7 +44,7 @@ class Beard {
 
     this.updateRadius = map(relativeSize, 30, 60, 0, 40);
 
-    console.log(relativeSize);
+    // console.log(relativeSize);
 
     this.mover.x = map(noise(this.noiseXOff), 0, 1, this.slowMoN, this.slowMoP);
     this.mover.y = map(noise(this.noiseYOff), 0, 1, this.slowMoN, this.slowMoP);
@@ -64,8 +64,10 @@ class Beard {
   }
 
   clicked(touch_x, touch_y) {
+    // let d = dist(touch_x, touch_y, this.x+this.updateRadius, this.y+this.updateRadius);
     let d = dist(touch_x, touch_y, this.x, this.y);
-    if (d < this.radius) {
+    // if (d < this.radius) {
+      if (d < this.radius+this.updateRadius) {
       console.log("just clicked")
       this.a = 0;
       popSound.play();

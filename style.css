@@ -124,13 +124,13 @@ left: 40%;
 color: #8dd4c9;
 /* background-color: aquamarine; */
 }
-#startShow:hover{
+/* #startShow:hover{
     color: #d4d28d;
     cursor: pointer;
 }
 #startShow:active{
     color: #d4d28d;
-}
+} */
 
 #mouth { 
     position: relative;
@@ -144,8 +144,13 @@ color: #8dd4c9;
     width: 400px;
     height: 80px;
 }
-#mouth:hover{
+#mouth:hover, #startShow{
+    /* color: #d4d28d; */
     cursor: pointer;
+}
+
+
+#mouth:hover{
     -moz-box-shadow:    10px 10px 10px #00000034;
     -webkit-box-shadow: 10px 10px 10px #00000034;
     box-shadow:         10px 10px 10px #00000034;
