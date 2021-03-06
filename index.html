@@ -16,30 +16,55 @@
     <script src="sketch.js"></script>
     <script src="beard.js"></script>
     <script src="timer.js"></script>
-    
-    <header id="top-intro">
-        <h1 id="h1-tittle-brush">Brush your Teeth</h1>
-        <button id="about-button"><h1>?</h1></button>
-    </header>
 
-    <div id="videoSpace">
-        <div id="videoCanvas"></div>
-    </div>
+    <div id="wrapper">
+        <header id="top-intro">
+            <h1 id="h1-tittle-brush">Brush your Teeth</h1>
+            <button id="about-button">
+                <h1>?</h1>
+            </button>
+        </header>
 
-    <div id="timerSpace">
-        <!-- <div id="timerCanvas"></div> -->
-        <div id="mouth">
-            <div id="teeth">
-                <div class="tooth"></div>
-                <div class="tooth"></div>
-                <div class="tooth"></div>
-                <div class="tooth"></div>
-            </div>
-            <canvas id="timerCanvas"></canvas>
+        <div id="videoSpace">
+            <div id="videoCanvas"></div>
         </div>
-    </div>
 
-    <div id="sound"><button id="sound-button"><h1>♫</h1></button></div>
+        <div id="timerSpace">
+            <!-- <div id="startShow">Start</div> -->
+            <!-- <div id="timerCanvas"></div> -->
+            <div id="mouth">
+            
+                    <div id="teeth">
+
+                        <div class="tooth"></div>
+                        <div class="tooth"></div>
+                        <!-- <div class="tooth"></div>
+                       <div class="tooth"></div> -->
+                    </div>
+            
+
+                <canvas id="timerCanvas"></canvas>
+            </div>
+            <h1 id="startShow">START</h1>
+        </div>
+
+        <div id="sound"><button id="sound-button">
+                <h1>
+                    <!-- music -->
+                    <!-- ♫ -->
+
+                    <!-- clock -->
+                    <svg height="75" width="75">
+                        <path d="M 35 40 H 40 H 50 " fill="red" stroke="#54968a" stroke-width="6" path
+                            stroke-linecap="round" />
+                        <path d="M 35 20 V 40 V 40 " fill="red" stroke="#54968a" stroke-width="6" path
+                            stroke-linecap="round" />
+                    </svg>
+
+                </h1>
+            </button></div>
+
+    </div>
 </body>
 
 </html>

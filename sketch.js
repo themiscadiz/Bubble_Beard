@@ -43,6 +43,11 @@ let videoCanvas;
 let handpose;
 let predictions = [];
 
+// EYES
+let eyeR;
+let eyeL;
+let spaceBetweenEyes;
+
 let timer;
 
 var cnv;
@@ -58,8 +63,8 @@ let popSound;
 
 // Sound
 function preload() {
-  soundFormats('mp3', 'wav');
-  popSound = loadSound('/assets/pop.wav');
+    soundFormats('mp3', 'wav');
+    popSound = loadSound('/assets/pop.wav');
 }
 
 
@@ -106,17 +111,24 @@ function setup() {
         lerpPos.push(thispoint);
     }
 
-    for (let i = 0; i < pointsLength; i++) {
-        bubble = new Beard(0.0, width / 2, mass, gravity);
-        bubbles.push(bubble);
-    }
+// start bubble beard with button mouth click
+    let startButton = document.getElementById("timerSpace");
+
+    startButton.addEventListener("click", () => {
+
+        for (let i = 0; i < pointsLength; i++) {
+            bubble = new Beard(0.0, width / 2, mass, gravity);
+            popSound.play();
+            bubbles.push(bubble);
+        }
+    });
 
     // Wrists
     wristR = createVector(width, height);
     wristL = createVector(width, height);
-  
-  //set sound amp and volume
-  amp = new p5.Amplitude(0.9);
+
+    //set sound amp and volume
+    amp = new p5.Amplitude(0.9);
 }
 
 
@@ -166,7 +178,7 @@ function draw() {
 
 
     for (let b of bubbles) {
-        b.update(newIndicator.x, newIndicator.y, updateGravity);
+        b.update(newIndicator.x, newIndicator.y, updateGravity, spaceBetweenEyes);
         b.display(newIndicator.x, newIndicator.y);
 
         // Explode bubbles
@@ -255,20 +267,28 @@ function drawKeypoints() {
 
                 // fill(0, 255, 255);
                 // ellipse(lerpPos[j].x, lerpPos[j].y, 30, 30);
+
+                // text(j, lerpPos[j].x, lerpPos[j].y);
             }
         }
     }
+
+    // Eyes
+    eyeR = createVector(lerpPos[1].x, lerpPos[1].y);
+    eyeL = createVector(lerpPos[2].x, lerpPos[2].y);
+    // spaceBetweenEyes = eyeR.dist(eyeL);
+    spaceBetweenEyes = p5.Vector.dist(eyeR, eyeL);
+    // console.log(spaceBetweenEyes);
+
     // Mouth
-    mouth = createVector(lerpPos[0].x, lerpPos[0].y+50);
-    fill(255,0,0);
+    mouth = createVector(lerpPos[0].x, lerpPos[0].y + 50);
+    fill(255, 0, 0);
     // ellipse(mouth.x, mouth.y, 50,50);
 
 
     // Wrists
     wristR = createVector(lerpPos[10].x, lerpPos[10].y);
-
     wristL = createVector(lerpPos[9].x, lerpPos[9].y);
-
 
 
     // distance between lips
@@ -279,7 +299,7 @@ function drawKeypoints() {
     mouthDistL = mouth.dist(wristL);
 
     if (counter > 300) {
-        if (mouthDistR < 100 || mouthDistL<100) {
+        if (mouthDistR < 100 || mouthDistL < 100) {
             fill(255, 0, 255);
             bubblesFall();
         }
