@@ -9,7 +9,8 @@ class Beard {
     this.mass = m;
     this.gravity = g;
     this.radius = random(5, 20);
-    this.updateRadius = this.radius;
+    this.startingRadius = this.radius;
+    this.updateRadius = this.startingRadius;
 
     this.stiffness = random(0.08, 0.5);
     this.damping = random(0.25, 0.80);
@@ -42,8 +43,10 @@ class Beard {
       this.gravity += 1;
     }
 
-    this.updateRadius = map(relativeSize, 30, 60, 0, 40);
+    this.updateRadius = this.startingRadius + map(relativeSize, 30, 60, 0, 40);
+    this.radius =  this.updateRadius;
 
+    // this.updateRadius = map(relativeSize, 30, 60, 0, 40);
     // console.log(relativeSize);
 
     this.mover.x = map(noise(this.noiseXOff), 0, 1, this.slowMoN, this.slowMoP);
@@ -63,17 +66,36 @@ class Beard {
     this.y += this.vy;
   }
 
-  clicked(touch_x, touch_y) {
-    // let d = dist(touch_x, touch_y, this.x+this.updateRadius, this.y+this.updateRadius);
-    let d = dist(touch_x, touch_y, this.x, this.y);
-    // if (d < this.radius) {
-      if (d < this.radius+this.updateRadius) {
+  clicked(touch_x, touch_y, vWidth) {
+
+    // console.log(this.updateRadius);
+    console.log("mousex:" + touch_x, "mousey:" + touch_y);
+    console.log("x:" + this.x, "y:" + this.y);
+
+    // let dr = this.radius + this.updateRadius;
+
+    let new_touch_x = vWidth -touch_x;
+    console.log("new_touch_x" + new_touch_x);
+   
+
+    let distance = dist(new_touch_x, touch_y, this.x, this.y);
+
+    if (distance < this.radius) {
       console.log("just clicked")
       this.a = 0;
       popSound.play();
     }
 
   }
+
+  // clicked(touch_x, touch_y) {
+  //   let d = dist(touch_x, touch_y, this.x, this.y);
+  //   if (d < this.radius) {
+  //     console.log("just clicked")
+  //     this.a = 0;
+  //     popSound.play();
+  //   }
+  // }
 
   proximity(other) {
     // let d = dist(this.x, this.y, other.x, other.y);
@@ -104,8 +126,8 @@ class Beard {
 
     noStroke();
 
-    ellipse(this.x, this.y, (this.radius * 2) + this.updateRadius, (this.radius * 2) + this.updateRadius);
-    // ellipse(this.x, this.y, this.radius * 2, this.radius * 2);
+    // ellipse(this.x, this.y, (this.radius * 2) + this.updateRadius, (this.radius * 2) + this.updateRadius);
+    ellipse(this.x, this.y, this.radius * 2, this.radius * 2);
   }
 
   drawLine(other) {

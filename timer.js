@@ -53,10 +53,11 @@ function render() {
         startButton.innerHTML = `<h2> </h2>`;
     });
 
+    // startTimer = true;
     if (startTimer) {
-        move += 10;
+        move += 1;
 
-        ctx.fillStyle = "#d4d28d";
+        ctx.fillStyle = "#D68473;";
         ctx.fill();
 
     }

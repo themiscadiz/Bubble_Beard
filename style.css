@@ -3,7 +3,8 @@
 body {
 background-color: #c0ecec;
 font-family: 'Inter', sans-serif;
-
+font-weight: 300;
+font-size: 14px;
 
 max-width: 1000px;
 margin: auto;
@@ -15,6 +16,10 @@ height: -webkit-fill-available;
 height: fill-available;
 position: relative;
 
+}
+
+a{
+    text-decoration: none;
 }
 
 /* #wrapper{
@@ -39,13 +44,27 @@ h1{
     margin: 3rem;
     color: #2E6D62;
     /* background-color: #8dd4c9; */
-    /* background-color: #54968a;
+    background-color: #54968a;
     color: transparent;
     text-shadow: 4px 4px 4px rgba(255, 255, 255, 0.3);
     -webkit-background-clip: text;
     -moz-background-clip: text;
-    background-clip: text; */
+    background-clip: text;
 }
+
+#h1-tittle-brush:hover{
+    width: 20vw;
+    margin: 3rem;
+    color: rgb(109, 65, 46);
+    /* background-color: #8dd4c9; */
+    background-color: #967c54;
+    color: transparent;
+    text-shadow: 4px 4px 4px rgba(255, 255, 255, 0.3);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+}
+
 button{
 padding: 0;
 border: none;
@@ -100,7 +119,7 @@ background: none;
     width: 100%;
     height: 100%;
     margin: auto;
-    background-color: tomato;
+    background-color: rgb(255, 141, 71);
     border-radius: 20rem;
     /* border-radius: 100px; */
 }
@@ -117,20 +136,22 @@ background: none;
 }
 
 #startShow{
-position: absolute;
-margin: auto;
-top: 40%;
-left: 40%;
+    position: fixed;
+    left: 50%;
+    transform: translate(-50%, 0);
+    top:70vh;
+   
 color: #8dd4c9;
 /* background-color: aquamarine; */
 }
-/* #startShow:hover{
+
+#startShow:hover{
     color: #d4d28d;
     cursor: pointer;
 }
 #startShow:active{
     color: #d4d28d;
-} */
+}
 
 #mouth { 
     position: relative;
@@ -144,17 +165,17 @@ color: #8dd4c9;
     width: 400px;
     height: 80px;
 }
+
 #mouth:hover, #startShow{
-    /* color: #d4d28d; */
     cursor: pointer;
 }
 
 
-#mouth:hover{
+/* #mouth:hover{
     -moz-box-shadow:    10px 10px 10px #00000034;
     -webkit-box-shadow: 10px 10px 10px #00000034;
     box-shadow:         10px 10px 10px #00000034;
-}
+} */
 
 #teeth {
     display: flex;
@@ -195,7 +216,7 @@ color: #8dd4c9;
     width: 75px;
     height: 75px;
     border-radius: 40px;
-    border: 5px solid #54968a;
+    border: 2px solid #54968a;
     background: #F8F8F8;
     box-shadow: -7px -7px 7px 2px rgba(255, 255, 255, 0.3), 7px 7px 7px 2px rgba(196, 196, 196, 0.39);
 }
@@ -209,5 +230,123 @@ color: #8dd4c9;
     justify-content: center;
     margin: 0px;
     color: #54968a;
+    font-size: 3rem;
+    font-weight: 300;
 }
+
+#main-section{
+    display: flex;
+    position: relative;
+    justify-content: flex-start;
+    /* background-color: #54968a; */
+    flex-direction:column;
+    align-items: center;
+
+}
+
+.main-section-content-1{
+    width: 30%;
+    height: 350px;
+    background-color: #ABD3CA;
+    float:left;
+}
+
+.main-section-content-1:hover{
+transition: .50s;
+    background-color: rgb(201, 247, 237);
+    /* background-color: #F5C451; */
+    box-shadow: 7px 7px 7px 5px rgba(196, 196, 196, 0.42);
+}
+
+.main-section-content{
+    width: 23.33%;
+    height: 350px;
+    /* background-color: #ABD3CA; */
+    float:left;
+}
+.hover-text{
+    top: 0px;
+    position: absolute;
+    float: left;
+    margin: auto;
+    width: 23.33%;
+    height: 350px;
+    background-color:transparent;
+}
+.hover-text h2{
+    padding: 1rem;
+    padding-top: 4rem;
+    font-size: 2rem;
+    color: transparent;
+}
+.hover-text:hover{
+    background-color:rgba(46, 109, 98,0.9);
+    transition: 1s;
+}
+.hover-text:hover h2 {
+
+    color: rgb(248, 250, 248);
+} 
+
+.main-section-content-1 h1{
+    width: 20vw;
+    margin: 3rem;
+    color: #2E6D62;
+    /* background-color: #8dd4c9; */
+    background-color: #54968a;
+    color: transparent;
+    text-shadow: 4px 4px 4px rgba(255, 255, 255, 0.3);
+    -webkit-background-clip: text;
+    -moz-background-clip: text;
+    background-clip: text;
+}
+.rules-img{
+    width: 100%;
+    height: 350px;
+}
+#instructions{
+    width: 50%;
+    margin: 10rem 3rem;
+}
+#instructions h2{
+font-weight: bold;
+font-weight: 600;
+}
+
+#instructions h3{
+    font-weight: bold;
+    font-weight: 300;
+    }
+
+    #main-header{
+        display: flex;
+        position: relative;
+        justify-content: space-between;
+
+    }
+    #menu{
+        margin: 2rem;
+        font-size: 16px;
+        font-weight: 600;
+        color: #2E6D62;
+    }
+
+    #nav{
+        margin: 2rem;
+        
+    }
+    .nav-buttons{
+        margin: 0rem 1rem;
+        padding: .50rem 1rem;
+        border-radius: 40px;
+        background: #CEE4F0;
+        text-decoration: none;
+        color: black;
+
+    }
+    .nav-buttons:hover{
+      transition: 1s;
+box-shadow: 5px 5px 10px 5px rgba(140, 184, 251, 0.45);
+
+    }
 

@@ -1,8 +1,14 @@
+<!-- ////////////////////////////////////////////////////////////////////////////
+////////////////////////////////////////////////////////////////////////////
+//////////////////////////////////////////////////////////////////////////// -->
+
+
+
 <html>
 
 <head>
     <meta charset="UTF-8" />
-    <title>Handpose with Webcam</title>
+    <title>Brush your Teeth</title>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/p5.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.dom.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.9.0/addons/p5.sound.min.js"></script>
@@ -11,60 +17,44 @@
 
 </head>
 
-<body onload="render();">
-    <!-- <h1>Handpose with Webcam</h1> -->
-    <script src="sketch.js"></script>
-    <script src="beard.js"></script>
-    <script src="timer.js"></script>
-
-    <div id="wrapper">
-        <header id="top-intro">
-            <h1 id="h1-tittle-brush">Brush your Teeth</h1>
-            <button id="about-button">
-                <h1>?</h1>
-            </button>
-        </header>
-
-        <div id="videoSpace">
-            <div id="videoCanvas"></div>
+<body style="background-color: #F1F3F4; max-width: 100%;">
+    <header id="main-header">
+        <div id="menu">Animo</div>
+        <div id="nav">
+            <a href="" class="nav-buttons">Help</a>
+            <a href="" class="nav-buttons">About</a>
         </div>
+    </header>
+    <section id="main-section">
+        <a href="/main.html">
 
-        <div id="timerSpace">
-            <!-- <div id="startShow">Start</div> -->
-            <!-- <div id="timerCanvas"></div> -->
-            <div id="mouth">
-            
-                    <div id="teeth">
-
-                        <div class="tooth"></div>
-                        <div class="tooth"></div>
-                        <!-- <div class="tooth"></div>
-                       <div class="tooth"></div> -->
-                    </div>
-            
-
-                <canvas id="timerCanvas"></canvas>
+            <div class="main-section-content-1">
+                <h1>Start your morning routine</h1>
             </div>
-            <h1 id="startShow">START</h1>
-        </div>
+            <div class="main-section-content">
+                <img src="/assets/0.png" class="rules-img" alt="Italian Trulli">
+                <div class="hover-text"><h2>Start brushing your teeth and bubble will appear</h2></div>
+                
+            </div>
+            <div class="main-section-content">
+                <img src="/assets/1.png"class="rules-img" alt="Italian Trulli">
+                <div class="hover-text"><h2>Pop the bubbles!</h2></div>
+                
+            </div>
+            <div class="main-section-content">
+                <img src="/assets/2.png" class="rules-img" alt="Italian Trulli">
+                <div class="hover-text"><h2>When you finish, clean you mouth to see the bubbles fall.</h2></div>
+                
+            </div>
+        </a>
+    </section>
+    <section id="instructions">
+        <h2>Try it for the first time.</h2>
+        <h3>
+            Try it for the first time. Try it for the first time. Try it for the first time. Try it for the first time.
+        </h3>
+    </section>
 
-        <div id="sound"><button id="sound-button">
-                <h1>
-                    <!-- music -->
-                    <!-- ♫ -->
-
-                    <!-- clock -->
-                    <svg height="75" width="75">
-                        <path d="M 35 40 H 40 H 50 " fill="red" stroke="#54968a" stroke-width="6" path
-                            stroke-linecap="round" />
-                        <path d="M 35 20 V 40 V 40 " fill="red" stroke="#54968a" stroke-width="6" path
-                            stroke-linecap="round" />
-                    </svg>
-
-                </h1>
-            </button></div>
-
-    </div>
 </body>
 
 </html>

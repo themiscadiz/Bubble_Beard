@@ -127,11 +127,11 @@ function setup() {
 
     //     startButton.addEventListener("click", () => {
 
-    //         for (let i = 0; i < pointsLength; i++) {
-    //             bubble = new Beard(0.0, width / 2, mass, gravity);
-    //             popSound.play();
-    //             bubbles.push(bubble);
-    //         }
+            // for (let i = 0; i < 3; i++) {
+            //     bubble = new Beard(0.0, width / 2, mass, gravity);
+            //     popSound.play();
+            //     bubbles.push(bubble);
+            // }
     //     });
 
     // Wrists
@@ -159,7 +159,7 @@ function modelReady() {
 
 function mousePressed() {
     for (let b of bubbles) {
-        b.clicked(mouseX, mouseY);
+        b.clicked(mouseX, mouseY, width);
         // bubbles.pop(b);
     }
 }
@@ -190,6 +190,7 @@ function draw() {
     startButton.addEventListener("click", () => {
         startCount = true;
     });
+
     if (startCount) {
         if (!music.isPlaying()) {
             music.play();
@@ -314,7 +315,7 @@ function drawKeypoints() {
     // console.log(spaceBetweenEyes);
 
     // Mouth
-    mouth = createVector(lerpPos[0].x, lerpPos[0].y + 50);
+    mouth = createVector(lerpPos[0].x, lerpPos[0].y + 25);
     fill(255, 0, 0);
     // ellipse(mouth.x, mouth.y, 50,50);
 
@@ -333,8 +334,9 @@ function drawKeypoints() {
 
 
     // bubble beard fall
-    if (bubbles.length > 10) {
-        if (mouthDistR < 200 || mouthDistL < 200) {
+    
+        if (mouthDistR < 100 || mouthDistL < 100) {
+            if (bubbles.length > 19) {
             fill(255, 0, 255);
 
             // bubbles fall
@@ -342,11 +344,12 @@ function drawKeypoints() {
 
             // do not create more bubbles
             startCount = false;
+            }
         }
         else {
             fill(255);
         }
-    }
+    
 
     // if (counter > 300) {
     //     if (mouthDistR < 100 || mouthDistL < 100) {
