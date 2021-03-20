@@ -334,14 +334,12 @@ function drawKeypoints() {
 
 
     // bubble beard fall
-    
-        if (mouthDistR < 100 || mouthDistL < 100) {
-            if (bubbles.length > 19) {
+    if (bubbles.length > 10) {
+        if (mouthDistR < 200 || mouthDistL < 200) {
             fill(255, 0, 255);
 
             // bubbles fall
             bubblesFall();
-
             // do not create more bubbles
             startCount = false;
             }
